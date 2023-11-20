@@ -8,6 +8,7 @@ import { MiddlewareModule } from './common/middleware/middleware.module';
 import { TemplateModule } from './template/template.module';
 import { EmailModule } from './email/email.module';
 import { SpaceshipModule } from './spaceship/spaceship.module';
+import { IdoModule } from './ido/ido.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { SpaceshipModule } from './spaceship/spaceship.module';
     TemplateModule,
     EmailModule,
     SpaceshipModule,
+    IdoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

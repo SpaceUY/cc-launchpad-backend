@@ -1,4 +1,5 @@
-import { InitialState1664467206702 } from 'migrations/1664467206702-InitialState';
+import { Init1700513362320 } from 'migrations/1700513362320-Init';
+import { Ido } from 'src/ido/entities/ido.entity';
 import { Spaceship } from 'src/spaceship/spaceship.entity';
 import { User } from 'src/user/user.model';
 import { DataSource, DataSourceOptions } from 'typeorm';
@@ -13,8 +14,8 @@ const connectionSource = new DataSource({
   database: process.env.DB_DATABASE,
   logging: true,
   synchronize: false,
-  entities: [Spaceship, User],
-  migrations: [InitialState1664467206702],
+  entities: [Spaceship, User, Ido],
+  migrations: [Init1700513362320],
   migrationsRun: true,
 } as DataSourceOptions);
 
