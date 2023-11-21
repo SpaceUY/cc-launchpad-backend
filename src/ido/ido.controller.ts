@@ -6,11 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { IdoService } from './ido.service';
 import { CreateIdoDto } from './dto/create-ido.dto';
 import { UpdateIdoDto } from './dto/update-ido.dto';
 import { Ido } from './entities/ido.entity';
+import { Status } from './types/status.enum';
 
 @Controller('ido')
 export class IdoController {
@@ -22,8 +24,11 @@ export class IdoController {
   }
 
   @Get()
-  findAll(): string {
-    return this.idoService.findAll();
+  findAll(
+    @Query('status') status: Status,
+    @Query('sortOrder') sortOrder: 'ASC' | 'DESC',
+  ): Promise<Ido[]> {
+    return this.idoService.findAll(status, sortOrder);
   }
 
   @Get(':id')

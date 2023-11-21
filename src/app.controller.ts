@@ -1,6 +1,5 @@
-import { Controller, Get, Inject, UseGuards } from '@nestjs/common';
+import { Controller, Get, Inject } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
-import { AuthGuard } from '@nestjs/passport';
 import { AppService } from './app.service';
 import { Html } from './common/decorators/html-content-type';
 import baseConfig from './config/base.config';

@@ -16,7 +16,16 @@ export class IDORepository extends Repository<Ido> {
     return createIdo;
   }
 
-  async getAll(): Promise<Ido[]> {
-    return await this.find();
+  async getAll(status?: Status, sortOrder?: 'ASC' | 'DESC'): Promise<Ido[]> {
+    const queryBuilder = this.createQueryBuilder('ido');
+
+    if (status && Object.values(Status).includes(status)) {
+      queryBuilder.andWhere('ido.status = :status', { status });
+    }
+
+    const sortColumn = 'startDate';
+    queryBuilder.orderBy(`ido.${sortColumn}`, sortOrder || 'DESC');
+
+    return await queryBuilder.getMany();
   }
 }
